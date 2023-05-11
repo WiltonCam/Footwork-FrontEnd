@@ -18,10 +18,10 @@ function FootwareEditForm() {
 
   const updateFootware = (updatedFootware) => {
     axios
-      .put(`${API}/footware/${id}`, updatedFootware)
+      .put(`${API}/footwares/${id}`, updatedFootware)
       .then(
         () => {
-          navigate(`/footware/${id}`);
+          navigate(`/footwares/${id}`);
         },
         (error) => console.error(error)
       )
@@ -37,7 +37,7 @@ function FootwareEditForm() {
   };
 
   useEffect(() => {
-    axios.get(`${API}/footware/${id}`).then(
+    axios.get(`${API}/footwares/${id}`).then(
       (response) => setFootware(response.data),
       (error) => navigate(`/not-found`)
     );

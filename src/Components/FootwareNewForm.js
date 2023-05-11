@@ -9,10 +9,10 @@ function FootwareNewForm() {
 
   const addFootware = (newFootware) => {
     axios
-      .post(`${API}/footware`, newFootware)
+      .post(`${API}/footwares`, newFootware)
       .then(
         () => {
-          navigate(`/footware`);
+          navigate(`/footwares`);
         },
         (error) => console.error(error)
       )

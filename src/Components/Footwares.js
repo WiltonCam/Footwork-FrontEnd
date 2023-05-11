@@ -7,7 +7,7 @@ const API = process.env.REACT_APP_API_URL;
 function Footwares() {
   const [footwares, setFootwares] = useState([]);
   useEffect(() => {
-    axios.get(`${API}/footware`).then((response) => {
+    axios.get(`${API}/footwares`).then((response) => {
       setFootwares(response.data)
     }).catch((e)=> {
       console.warn("catch", e)
