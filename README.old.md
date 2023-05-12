@@ -1,2 +1,2 @@
 # Footwork-FrontEnd
-This application will show the newest trends in footwear and where to find them for purchase.
+An application built for the fashion driven individuals who love to keep track of the latest in trendy footwear. From your favorite casual footwear,we can assist you in storing all the latest in potential footwear that you should keep an eye on.

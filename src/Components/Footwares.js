@@ -7,7 +7,8 @@ const API = process.env.REACT_APP_API_URL;
 function Footwares() {
   const [footwares, setFootwares] = useState([]);
   useEffect(() => {
-    axios.get(`${API}/footwares`).then((response) => {
+    axios.get(`${API}/footware`).then((response) => {
+        console.log(response.data)
       setFootwares(response.data)
     }).catch((e)=> {
       console.warn("catch", e)
@@ -16,20 +17,11 @@ function Footwares() {
   return (
     <div className="Bookmarks">
       <section>
-        <table>
-          <thead>
-            <tr>
-              <th></th>
-              <th>Take me there</th>
-              <th>See this footware</th>
-            </tr>
-          </thead>
-          <tbody>
-            {footware.map((footware) => {
+       <div>
+            {footwares.map((footware) => {
               return <Footware key={footware.id} footware={footware} />;
             })}
-          </tbody>
-        </table>
+          </div>
       </section>
     </div>
   );

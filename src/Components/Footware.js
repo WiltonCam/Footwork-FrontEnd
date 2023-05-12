@@ -2,23 +2,25 @@ import { Link } from "react-router-dom";
 
 function Footware({footware}) {
   return (
-    <tr>
-      <td>
+    <div>
+     <p>
         {footware.is_Trending ? (
           <span>🔥</span>
         ) : (
           <span>&nbsp; &nbsp; &nbsp;</span>
         )}
-      </td>
-      <td>
+      </p>
+      <p>{footware.name}</p>
+      <p>
         <a href={footware.url} target="_blank" rel="noreferrer">
-          {footware.name}
+          {footware.url}
         </a>
-      </td>
-      <td>
+        <p>${footware.cost}</p>
+      </p>
+      <p>
         <Link to={`/footware/${footware.id}`}>👟</Link>
-      </td>
-    </tr>
+      </p>
+    </div>
   );
 }
 

@@ -1,0 +1,23 @@
+/* Hide the pop-up card by default */
+ /* .Bookmarks{
+  display: none;
+} */
+
+/* Show the pop-up card when hovering over the link */
+.card-hover{
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+}
+
+/* Style the pop-up card */
+ .card{
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  padding: 10px;
+  width: 200px;
+}
+
