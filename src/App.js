@@ -2,8 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 //COMPONENTS
 import NavBar from './Components/Navbar';
-// import About from './About';
+import About from './Components/About';
 import 'bootstrap/dist/css/bootstrap.min.css'
+
 // PAGES
 import Edit from "./Pages/Edit";
 import FourOFour from "./Pages/FourOFour";
