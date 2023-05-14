@@ -1,9 +1,10 @@
+import FootwareEditForm from "../Components/FootwareEditForm";
 
 function Edit() {
     return (
       <div className="New Edit">
-        <h2>Edit</h2>
-        
+        <h2 classname="bold">Edit</h2>
+        <FootwareEditForm />
       </div>
     );
   }

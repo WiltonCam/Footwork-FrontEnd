@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import Footwares from "./Footwares.js";
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -13,7 +13,7 @@ function FootwareDetails() {
 
   useEffect(() => {
     axios
-      .get(`${API}/footware/${id}`)
+      .get(`${API}/footwares/${id}`)
       .then((response) => {
         setFootware(response.data);
       })
@@ -23,14 +23,15 @@ function FootwareDetails() {
   }, [id]);
 
   const handleDelete = () => {
+    alert("Are you sure you want to delete this footware?")
     deleteFootware();
   };
 
   const deleteFootware = () => {
     axios
-      .delete(`${API}/footware/${id}`)
+      .delete(`${API}/footwares/${id}`)
       .then(() => {
-        navigate(`/footware`);
+        navigate(`/`);
       })
       .catch((e) => {
         console.warn("catch:", e);
@@ -38,31 +39,53 @@ function FootwareDetails() {
   };
 
   return (
-    <article>
-      <h3>
-        {footware.is_Trending ? <span>⭐️</span> : null} {bookmark.name}
-      </h3>
-      <h5>
-        <span>
-          <a href={footware.url}>{footware.name}</a>
-        </span>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {footware.url}
-      </h5>
-      <h6>{footware.category}</h6>
-      <div className="showNavigation">
+    <article> 
+      <h5>{footware.name}</h5>  
+       <div className="show-details">  
         <div>
-          <Link to={`/footware`}>
-            <button>Back</button>
-          </Link>
+         
+          <img src={footware.image} />
+          {/* <h3>
+            {footware.is_trending ? <span>🔥</span> : null} </h3> */}
+          
+          <h4 className="bold">${footware.cost}</h4>
+          <h5>Shop here:
+            <span>
+              <a href={footware.url} target="blank">{footware.url}</a>
+            </span>
+          </h5>
         </div>
         <div>
-          <Link to={`/footware/id/edit`}>
-            <button>Edit</button>
-          </Link>
+          <br />
+          <h6>Product Details</h6>
+          <p>Type: {footware.category}</p>
+          <p>Style: style</p>
+          <p>Color: color</p>
+          <p>Release Date: date</p>
         </div>
+        </div>
+        <div className="showNavigation">
+          <div>
+            <Link to={`/`}>
+              <button>Back</button>
+            </Link>
+          </div>
+          <div>
+            <Link to={`/footwares/${footware.id}/edit`}>
+              <button>Edit</button>
+            </Link>
+          </div>
+          <div>
+            <button onClick={handleDelete}>Delete</button>
+          </div> 
+        
+      </div>  
+        <br />
+        
+        <h4>Related Products</h4>
         <div>
-          <button onClick={handleDelete}>Delete</button>
-        </div>
+        <Footwares />
+       
       </div>
       {/* <Reviews/> */}
     </article>

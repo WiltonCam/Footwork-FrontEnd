@@ -1,25 +1,24 @@
 import { Link } from "react-router-dom";
 
 function Footware({footware}) {
+
+  
   return (
-    <div>
+    <div className="footware-details">
+     <Link className="decor" to={`/footwares/${footware.id}`}>
      <p>
-        {footware.is_Trending ? (
-          <span>🔥</span>
+        {footware.is_trending ? (
+          <span className="badge">Trending🔥</span>
         ) : (
           <span>&nbsp; &nbsp; &nbsp;</span>
         )}
       </p>
+      <img src={footware.image} />
       <p>{footware.name}</p>
-      <p>
-        <a href={footware.url} target="_blank" rel="noreferrer">
-          {footware.url}
-        </a>
-        <p>${footware.cost}</p>
-      </p>
-      <p>
-        <Link to={`/footware/${footware.id}`}>👟</Link>
-      </p>
+      
+      <p className="bold">${footware.cost}</p>
+      
+      </Link>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { Link } from 'react-router-dom';
 const API = process.env.REACT_APP_API_URL;
 
 function FootwareNewForm() {
@@ -11,8 +11,8 @@ function FootwareNewForm() {
     axios
       .post(`${API}/footwares`, newFootware)
       .then(
-        () => {
-          navigate(`/footwares`);
+        (result) => {
+          navigate(`/footwares/${result.data.id}`);
         },
         (error) => console.error(error)
       )
@@ -24,7 +24,7 @@ function FootwareNewForm() {
     cost: "",
     url: "",
     category: "",
-    is_Trending: false,
+    is_trending: false,
   });
 
   const handleTextChange = (event) => {
@@ -32,7 +32,7 @@ function FootwareNewForm() {
   };
 
   const handleCheckboxChange = () => {
-    setFootware({ ...footware, is_Trending: !footware.is_Trending });
+    setFootware({ ...footware, is_trending: !footware.is_trending });
   };
 
   const handleSubmit = (event) => {
@@ -42,7 +42,7 @@ function FootwareNewForm() {
 
 
 return (
-    <div className="Edit">
+    <div className="New">
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name:</label>
         <input
@@ -53,6 +53,15 @@ return (
           placeholder="Name of Footware"
           required
         />
+         <label htmlFor="cost">Cost:</label>
+        <input
+          id="cost"
+          type="number"
+          required
+          min="0"
+          value={footware.cost}
+          onChange={handleTextChange}
+        />
         <label htmlFor="url">URL:</label>
         <input
           id="url"
@@ -60,7 +69,7 @@ return (
           pattern="http[s]*://.+"
           required
           value={footware.url}
-          placeholder="http://"
+          placeholder="https://"
           onChange={handleTextChange}
         />
         <label htmlFor="category">Category:</label>
@@ -72,19 +81,30 @@ return (
           placeholder="sneaker, heel, sandal, ..."
           onChange={handleTextChange}
         />
-        <label htmlFor="is_favorite">Trending:</label>
+         <label htmlFor="image">Image Link:</label>
         <input
-          id="is_favorite"
+          id="image"
+          type="text"
+          name="image"
+          value={footware.image}
+          placeholder="https://"
+          pattern="http[s]*://.+"
+          required
+          onChange={handleTextChange}
+        />
+        <label htmlFor="is_trending">Trending:</label>
+        <input
+          id="is_trending"
           type="checkbox"
           onChange={handleCheckboxChange}
-          checked={footware.is_Trending}
+          checked={footware.is_trending}
         />
 
         <br />
 
         <input type="submit" />
       </form>
-      <Link to={`/footware/${id}`}>
+      <Link to={`/`}>
         <button>Go back!</button>
       </Link>
     </div>

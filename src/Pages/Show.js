@@ -1,8 +1,10 @@
+import FootwareDetails from "../Components/FootwareDetails";
+
 function Show() {
     return (
       <div className="Show">
-        <h2>Show</h2>
-        
+        <h2 className="title">Trending</h2>
+        <FootwareDetails />
       </div>
     );
   }

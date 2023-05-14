@@ -13,7 +13,8 @@ function FootwareEditForm() {
     cost: "",
     url: "",
     category: "",
-    is_Trending: false,
+    image: "",
+    is_trending: false,
   });
 
   const updateFootware = (updatedFootware) => {
@@ -33,7 +34,7 @@ function FootwareEditForm() {
   };
 
   const handleCheckboxChange = () => {
-    setFootware({ ...footware, is_Trending: !footware.is_Trending });
+    setFootware({ ...footware, is_trending: !footware.is_trending });
   };
 
   useEffect(() => {
@@ -48,7 +49,9 @@ function FootwareEditForm() {
     updateFootware(footware, id);
   };
   return (
-    <div className="Edit">
+    <div className="New">
+      <div><img src={footware.image} /></div>
+      
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name:</label>
         <input
@@ -59,6 +62,15 @@ function FootwareEditForm() {
           placeholder="Name of Footware"
           required
         />
+           <label htmlFor="cost">Cost:</label>
+        <input
+          id="cost"
+          type="number"
+          required
+          min="0"
+          value={footware.cost}
+          onChange={handleTextChange}
+        />
         <label htmlFor="url">URL:</label>
         <input
           id="url"
@@ -66,7 +78,7 @@ function FootwareEditForm() {
           pattern="http[s]*://.+"
           required
           value={footware.url}
-          placeholder="http://"
+          placeholder="https://"
           onChange={handleTextChange}
         />
         <label htmlFor="category">Category:</label>
@@ -78,19 +90,29 @@ function FootwareEditForm() {
           placeholder="sneaker, heel, sandal, ..."
           onChange={handleTextChange}
         />
+        <label htmlFor="image">Image URL:</label>
+        <input
+          id="image"
+          type="text"
+          pattern="http[s]*://.+"
+          required
+          value={footware.image}
+          placeholder="https://"
+          onChange={handleTextChange}
+        />
         <label htmlFor="is_favorite">Trending:</label>
         <input
-          id="is_favorite"
+          id="is_trending"
           type="checkbox"
           onChange={handleCheckboxChange}
-          checked={footware.is_Trending}
+          checked={footware.is_trending}
         />
 
         <br />
 
         <input type="submit" />
       </form>
-      <Link to={`/footware/${id}`}>
+      <Link to={`/footwares/${id}`}>
         <button>Go back!</button>
       </Link>
     </div>
